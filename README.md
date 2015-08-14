@@ -1,4 +1,5 @@
 ### Introduction to the Problems
+[![Build Status](https://travis-ci.org/patweb99/sales-tax-exercise.svg?branch=master)](https://travis-ci.org/patweb99/sales-tax-exercise)
 
 All problems below require some kind of input. You are free to implement any
 mechanism for feeding input into your solution (for example, using hard coded data
