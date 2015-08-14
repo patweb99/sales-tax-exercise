@@ -1,11 +1,11 @@
-Introduction to the Problems
+### Introduction to the Problems
 
 All problems below require some kind of input. You are free to implement any
 mechanism for feeding input into your solution (for example, using hard coded data
 within a unit test). You should provide sufficient evidence that your solution is complete
 by, as a minimum, indicating that it works correctly against the supplied test data.
 
-Problem One: Sales Tax
+### Problem One: Sales Tax
 
 Basic sales tax is applicable at a rate of 10% on all goods, except books, food, and
 medical products that are exempt. Import duty is an additional sales tax applicable on all
@@ -16,7 +16,7 @@ sales taxes paid. The rounding rules for sales tax are that for a tax rate of n%
 price of p contains (np/100 rounded up to the nearest 0.05) amount of sales tax.
 Write an application that prints out the receipt details for these shopping baskets...
 
-INPUT:
+## INPUT:
 
 *Input 1*:
 * 1 book at 12.49
@@ -33,7 +33,7 @@ INPUT:
 * 1 packet of headache pills at 9.75
 * 1 box of imported chocolates at 11.25
 
-OUTPUT
+## OUTPUT
 
 *Output 1*:
 * 1 book: 12.49
