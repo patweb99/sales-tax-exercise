@@ -57,6 +57,27 @@ Write an application that prints out the receipt details for these shopping bask
 * Sales Taxes: 6.70
 * Total: 74.68
 
+### Class Descriptions
+
+## ObjectPool.py
+Is a very generic pool class that assists with holding metadata information used to help
+figure out tax information (amongst other things) associated to the item being inputed into the
+calculator.
+
+# MetadataDictObjectPool()
+Is a simple metadata pool that can be injected into the calculator constructor.
+
+## SalesTax.py
+Is a class containing whatever classes the calculator may need in order to operate.
+
+# Calculator()
+Is the calculator class itself. It currently contians all the general functionality you need in order
+calculate items inserted into it. It also holds a history of items that have been inserted to help help
+figure out totals (sales tax, etc).
+
+### Tests
+Test are done by using BDD [lettuce](http://lettuce.it), You can find the tests within the /features folder.
+
 ### PREREQUISITES
 ```
  $ pip install -r requirements.txt
