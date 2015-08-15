@@ -1,4 +1,4 @@
-### Introduction to the Problems
+# Introduction to the Problems
 [![Build Status](https://travis-ci.org/patweb99/sales-tax-exercise.svg?branch=develop)](https://travis-ci.org/patweb99/sales-tax-exercise)
  
 All problems below require some kind of input. You are free to implement any
@@ -6,7 +6,7 @@ mechanism for feeding input into your solution (for example, using hard coded da
 within a unit test). You should provide sufficient evidence that your solution is complete
 by, as a minimum, indicating that it works correctly against the supplied test data.
 
-### Problem One: Sales Tax
+# Problem One: Sales Tax
 
 Basic sales tax is applicable at a rate of 10% on all goods, except books, food, and
 medical products that are exempt. Import duty is an additional sales tax applicable on all
@@ -57,33 +57,33 @@ Write an application that prints out the receipt details for these shopping bask
 * Sales Taxes: 6.70
 * Total: 74.68
 
-### Class Descriptions
+# Class Descriptions
 
 ## ObjectPool.py
 Is a very generic pool class that assists with holding metadata information used to help
 figure out tax information (amongst other things) associated to the item being inputed into the
 calculator.
 
-# MetadataDictObjectPool()
+### MetadataDictObjectPool()
 Is a simple metadata pool that can be injected into the calculator constructor.
 
 ## SalesTax.py
 Is a class containing whatever classes the calculator may need in order to operate.
 
-# Calculator()
+### Calculator()
 Is the calculator class itself. It currently contians all the general functionality you need in order
 calculate items inserted into it. It also holds a history of items that have been inserted to help help
 figure out totals (sales tax, etc).
 
-### Tests
-Test are done by using BDD [lettuce](http://lettuce.it), You can find the tests within the /features folder.
-
-### PREREQUISITES
+# PREREQUISITES
 ```
  $ pip install -r requirements.txt
 ```
 
-### RUN TESTS
+# Tests
+Test are done by using BDD [lettuce](http://lettuce.it), You can find the tests within the /features folder.
+
+## RUN TESTS
 ```
  $ lettuce
 ```
