@@ -63,7 +63,7 @@ Write an application that prints out the receipt details for these shopping bask
 Pay special attention to the `input()` and `input_by_full_desc()` def's as it will also return a metadata object describing
 the desc you've inputted.
 
-Metadata object returned
+## Metadata object returned ##
 ```
 {
     "desc_hash" : hash of the description,
