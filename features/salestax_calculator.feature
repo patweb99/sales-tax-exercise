@@ -1,8 +1,8 @@
 Feature: Sales Calculator
 
     Scenario: (Non-taxable) Basic sales tax is applicable at a rate of 10% on all goods, except books, food, andmedical products that are exempt.
-        Given I have a purchase item of "1 book at 12.49"
-        Then I have a purchase item total price of "12.49" in the checkout list for item "book"
+        Given I have a purchase item of "1 Book at 12.49"
+        Then I have a purchase item total price of "12.49" in the checkout list for item "Book"
 
     Scenario: (Taxable) Basic sales tax is applicable at a rate of 10% on all goods, except books, food, andmedical products that are exempt.
         Given I have a purchase item of "1 music CD at 14.99"
@@ -13,10 +13,10 @@ Feature: Sales Calculator
         Then I have a purchase item total price of "10.50" in the checkout list for item "imported box of chocolates"
 
     Scenario: (Input 1) When I purchase items I receive a receipt, which lists the name of all the items and their price (including tax), finishing with the total cost of the items, and the total amounts of sales taxes paid.
-        Given I have a purchase item of "1 book at 12.49"
+        Given I have a purchase item of "1 Book at 12.49"
         Given I have a purchase item of "1 music CD at 14.99"
         Given I have a purchase item of "1 chocolate bar at 0.85"
-        Then I get an output of purchase item of "1 book: 12.49"
+        Then I get an output of purchase item of "1 Book: 12.49"
         Then I get an output of purchase item of "1 music CD: 16.49"
         Then I get an output of purchase item of "1 chocolate bar: 0.85"
         Then I get a total sales tax of "1.50"
