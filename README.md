@@ -93,7 +93,7 @@ Is the calculator class itself. It currently contians all the general functional
 calculate items inserted into it. It also holds a history of items that have been inserted to help help
 figure out totals (sales tax, etc).
 
-# PREREQUISITES
+# Prerequisites
 ```
  $ pip install -r requirements.txt
 ```
