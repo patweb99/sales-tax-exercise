@@ -14,7 +14,7 @@ def then_i_have_a_purchase_item_total_price_of_group1_in_the_checkout_list(step,
 
     # get the purchase item information
     price_in = str( group1 )
-    purchase_item_in = group2.lower()
+    purchase_item_in = group2
 
     # loop over the checkout items and find the purchase item in question
     found = False
@@ -36,7 +36,7 @@ def then_i_get_an_output_of_purchase_item_of_group1(step, group1):
     checkout = world.calculator.checkout()
 
     # get the purchase item
-    purchase_in = group1.lower()
+    purchase_in = group1
 
     # loop over the checkout items and find the purchase item in question
     found = False

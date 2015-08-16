@@ -59,6 +59,24 @@ Write an application that prints out the receipt details for these shopping bask
 
 # Classes
 
+*NOTE:* def's are defined with docstrings, which will help you understand what may be returned.
+Pay special attention to the `input()` and `input_by_full_desc()` def's as it will also return a metadata object describing
+the desc you've inputted.
+
+Metadata object returned
+```
+{
+    "desc_hash" : hash of the description,
+    "input_desc" : description that was inserted into the calculator,
+    "output_desc" : output of the description/alias,
+    "count" : count of described item inserted,
+    "sales_tax": sales tax associated to item and count,
+    "import_tax": import tax associated to item and count,
+    "base_price" : base price of described item inserted,
+    "total_price" : total price of described item (includes taxes)
+}
+```
+
 `ObjectPool.py`
 Is a very generic pool class that assists with holding metadata information used to help
 figure out tax information (amongst other things) associated to the item being inputed into the
@@ -86,4 +104,9 @@ Test are done by using BDD [lettuce](http://lettuce.it), You can find the tests 
 ## RUN TESTS
 ```
  $ lettuce
+```
+
+You can also call the SalesTax.py directly, which will output the desired input and output results.
+```
+ $ python SalesTax.py
 ```

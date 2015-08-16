@@ -18,8 +18,8 @@ class MetadataDictObjectPool( object ):
         :return:
         """
         # add/update item to dict. use hash of description as key
-        self.metadata_dict_object_pool[ hash( desc.lower() ) ] = {
-            'desc': desc.lower(),
+        self.metadata_dict_object_pool[ hash( desc ) ] = {
+            'desc': desc,
             'alias_arr' : alias_arr,
             'is_taxable': is_taxable,
             'is_import': is_import

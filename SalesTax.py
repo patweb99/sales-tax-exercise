@@ -112,7 +112,7 @@ class Calculator ( object ):
             purchase_arr.pop( len( purchase_arr ) - 1 )
 
         # join the remaining to from the desc
-        desc = str(' '.join( purchase_arr )).lower()
+        desc = str(' '.join( purchase_arr ))
 
         return count, desc, price
 
@@ -225,3 +225,155 @@ class Calculator ( object ):
 
         # return total
         return float( format( total, '.2f' ) )
+
+if __name__ == "__main__":
+
+    # create object pool of lookup items
+    object_pool = MetadataDictObjectPool()
+    object_pool.add( desc="Book", is_taxable=False, is_import=False )
+    object_pool.add( desc="music CD", is_taxable=True, is_import=False )
+    object_pool.add( desc="chocolate bar", is_taxable=False, is_import=False )
+    object_pool.add( desc="imported box of chocolates", alias_arr=["box of imported chocolates"], is_taxable=False, is_import=True )
+    object_pool.add( desc="imported bottle of perfume", is_taxable=True, is_import=True )
+    object_pool.add( desc="bottle of perfume", is_taxable=True, is_import=False )
+    object_pool.add( desc="packet of headache pills", is_taxable=False, is_import=False )
+
+    #######################################
+    # INPUT 1 (USED FOR PRINTOUT)
+    #######################################
+    # placing in tabs to support output
+    input = """
+    \tInput 1:
+    \t1 Book at 12.49
+    \t1 music CD at 14.99
+    \t1 chocolate bar at 0.85
+    """
+
+    """
+    Output 1:
+    1 Book: 12.49
+    1 music CD: 16.49
+    1 chocolate bar: 0.85
+    Sales Taxes: 1.50
+    Total: 29.83
+    """
+    # create calculator object and inject the metadata pool
+    calculator = Calculator( metadata_object_pool=object_pool )
+
+    # input the items
+    # we do half with a full description
+    # we do the other half with a broken down description
+    calculator.input_by_full_desc( full_desc="1 Book at 12.49" )
+    calculator.input_by_full_desc( full_desc="1 music CD at 14.99" )
+    calculator.input_by_full_desc( full_desc="1 chocolate bar at 0.85" )
+
+    # checkout items
+    checkout = calculator.checkout()
+    # total sales tax
+    total_sales_tax = calculator.checkout_sales_tax_total()
+    # total import tax
+    total_import_tax = calculator.checkout_import_tax_total()
+    # total price
+    total = calculator.checkout_total()
+
+    print input
+    # print out the checkout
+    # print out each item, then sales tax, then import tax
+    print "\tOutput 1:"
+    for item in checkout:
+        print "\t{0} {1}: {2}".format( item['count'], item['output_desc'], format( item['total_price'], '.2f' ) )
+    print "\tSales Taxes: {0}".format( format( total_sales_tax + total_import_tax, ".2f" ) )
+    print "\tTotal: {0}".format( format( total, ".2f" ) )
+
+    #######################################
+    # INPUT 2 (USED FOR PRINTOUT)
+    #######################################
+    # placing in tabs to support output
+    input = """
+    \tInput 2:
+    \t1 imported box of chocolates at 10.00
+    \t1 imported bottle of perfume at 47.50
+    """
+
+    """
+    Output 2:
+    1 imported box of chocolates: 10.50
+    1 imported bottle of perfume: 54.65
+    Sales Taxes: 7.65
+    Total: 65.15
+    """
+    # create calculator object and inject the metadata pool
+    calculator = Calculator( metadata_object_pool=object_pool )
+
+    # input the items
+    # we do half with a full description
+    # we do the other half with a broken down description
+    calculator.input( count=1, desc="imported box of chocolates", price=10.00 )
+    calculator.input( count=1, desc="imported bottle of perfume", price=47.50 )
+
+    # checkout items
+    checkout = calculator.checkout()
+    # total sales tax
+    total_sales_tax = calculator.checkout_sales_tax_total()
+    # total import tax
+    total_import_tax = calculator.checkout_import_tax_total()
+    # total price
+    total = calculator.checkout_total()
+
+    print input
+    # print out the checkout
+    # print out each item, then sales tax, then import tax
+    print "\tOutput 2:"
+    for item in checkout:
+        print "\t{0} {1}: {2}".format( item['count'], item['output_desc'], format( item['total_price'], '.2f' ) )
+    print "\tSales Taxes: {0}".format( format( total_sales_tax + total_import_tax, ".2f" ) )
+    print "\tTotal: {0}".format( format( total, ".2f" ) )
+
+    #######################################
+    # INPUT 3 (USED FOR PRINTOUT)
+    #######################################
+    # placing in tabs to support output
+    input = """
+    \tInput 3:
+    \t1 imported bottle of perfume at 27.99
+    \t1 bottle of perfume at 18.99
+    \t1 packet of headache pills at 9.75
+    \t1 box of imported chocolates at 11.25
+    """
+    """
+    Output 3:
+    1 imported bottle of perfume: 32.19
+    1 bottle of perfume: 20.89
+    1 packet of headache pills: 9.75
+    1 imported box of chocolates: 11.85
+    Sales Taxes: 6.70
+    Total: 74.68
+    """
+    # create calculator object and inject the metadata pool
+    calculator = Calculator( metadata_object_pool=object_pool )
+
+    # input the items
+    # we do half with a full description
+    # we do the other half with a broken down description
+    calculator.input_by_full_desc( full_desc="1 imported bottle of perfume at 27.99" )
+    calculator.input_by_full_desc( full_desc="1 bottle of perfume at 18.99" )
+    calculator.input( count=1, desc="packet of headache pills", price=9.75 )
+    calculator.input( count=1, desc="box of imported chocolates", price=11.25 )
+
+    # checkout items
+    checkout = calculator.checkout()
+    # total sales tax
+    total_sales_tax = calculator.checkout_sales_tax_total()
+    # total import tax
+    total_import_tax = calculator.checkout_import_tax_total()
+    # total price
+    total = calculator.checkout_total()
+
+    print input
+    # print out the checkout
+    # print out each item, then sales tax, then import tax
+    print "\tOutput 3:"
+    for item in checkout:
+        print "\t{0} {1}: {2}".format( item['count'], item['output_desc'], format( item['total_price'], ".2f" ) )
+    print "\tSales Taxes: {0}".format( format( total_sales_tax + total_import_tax, ".2f" ) )
+    print "\tTotal: {0}".format( format( total, ".2f" ) )
