@@ -101,7 +101,7 @@ figure out totals (sales tax, etc).
 # Tests
 Test are done by using BDD [lettuce](http://lettuce.it), You can find the tests within the `/features` folder.
 
-## Run tests
+Run tests
 ```
  $ lettuce
 ```
