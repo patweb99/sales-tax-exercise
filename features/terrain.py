@@ -22,3 +22,5 @@ def setup_some_scenario(scenario):
 
     # create a new calculator per scenario
     world.calculator = Calculator( metadata_object_pool=world.object_pool )
+
+    world.empty_object_pool = MetadataDictObjectPool()
